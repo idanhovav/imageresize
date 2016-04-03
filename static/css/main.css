@@ -1,0 +1,90 @@
+
+/*
+ * Display navigation links inline
+ */
+.basic-text{
+	color: #303030 !important;
+    font-size: 14px;
+    font-family: verdana;
+    text-indent: 15px;
+    margin: 2px;
+}
+ .left {
+ 	float: left;
+ }
+ .right {
+ 	float: right;
+ }
+
+/*=============================================================
+    Authour URI: www.binarytheme.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+   
+    ========================================================  */
+
+
+/*=======================================
+    GENERAL STYLES
+==================================================*/
+
+body {
+    font-family:'Open Sans', sans-serif;
+    font-size:14px;
+    background-color:#ECECEC;
+}
+.bayarea{
+	color:white !important;
+    background-image:url("https://bayareapractices.files.wordpress.com/2012/08/golden20gate20panorama2019x41.jpeg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+    background-size: 1280px 300px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Open Sans', sans-serif;
+}
+
+h1 {
+    line-height:50px;
+    font-weight:900;
+    font-size:40px;
+    padding:50px 20px 5px 20px;
+    text-transform:uppercase;
+    color:rgba(0, 121, 138, 1);
+}
+
+
+.pad-adjust {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+h2 {
+    line-height:50px;
+}
+h3 {
+    line-height:30px;
+    padding:5px;
+}
+h4 {
+   padding-top: 5px;
+line-height: 30px;
+padding-bottom: 0px;
+font-size: 20px;
+font-weight: 900;
+}
+
+p {
+    font-weight:300;
+    line-height:30px;
+}
