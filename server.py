@@ -1,7 +1,7 @@
 import os, sys
 from flask import Flask, render_template, g
 import urllib
-import org.apache.commons.io.FilenameUtils;
+#import org.apache.commons.io.FilenameUtils;
 import Image
 
 app = Flask(__name__)
@@ -16,15 +16,15 @@ def resize():
 	IMAGE = [0]
 	return render_template('resize.html', image=IMAGE)
 
-def resize_function(url):
-	filename = url.split('/')[-1].split('#')[0].split('?')[0] #from the internet
-	saveLocation = 'origImgs/' + filename
-	original = open(saveLocation, 'wb')
-	f.write(urllib.urlopen(url).read())
-	f.close()
+def resize_function(inFile):
 	size = 128, 128
-	img = Image.open(saveLocation)
-	img.thumbnail(size, Image.ANTIALIAS)
-	im.save('resizedImgs' + filename)
+	inFileName, inExtension = os.path.splitext(inFile)
+	outFile = inFileName + ".thumbnail"
+	try:
+		im = Image.open(inFile)
+		im.thumbnail(size, Image.ANTIALIAS)
+		im.save(outFile, "JPEG")
+	except IOError:
+		print("issue")
 if __name__ == '__main__':
 	app.run(debug=True)
