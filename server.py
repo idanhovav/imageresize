@@ -8,7 +8,7 @@ from wtforms.validators import DataRequired
 app = Flask(__name__)
 app.secret_key = 'KJHDJKHKSANM<*&(*^21ngjk574754' # not sure why i need this
 originalImageFolderName = "origImages/"
-resizedImageFolderName = "templates/resizedImages/"
+resizedImageFolderName = "static/resizedImages/"
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -19,7 +19,7 @@ def home():
 		width = form.width.data
 		height = form.height.data
 		flash('Resizing Image={0} to {1}, {2}'.format(fileName, str(width), str(height)))
-		newImg = "resizedImages/" + resize_function(fileName, width, height)
+		newImg = resize_function(fileName, width, height)
 		return render_template('resize.html', image=newImg, picWidth=width, picHeight=height)
 	return render_template('home.html', form=form)
 
@@ -32,11 +32,11 @@ def home():
 def resize_function(inFile, width, height):
 	size = int(float(width)), int(float(height))
 	inFileName, inExtension = os.path.splitext(inFile)
-	outFile = inFileName + "_RESIZED.jpg"
+	outFile = resizedImageFolderName + inFileName + "_RESIZED.jpg"
 	try:
 		im = Image.open(originalImageFolderName + inFile)
 		im.thumbnail(size, Image.ANTIALIAS)
-		im.save(resizedImageFolderName + outFile, "JPEG")
+		im.save(outFile, "JPEG")
 		return outFile
 	except IOError:
 		print("issue")
