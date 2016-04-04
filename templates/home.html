@@ -1,6 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1> Enter the url to an image to begin! </h1>
+	<h1> Fill out the following form to begin: </h1>
+	<form action="" method="post" name="primaryForm">
+		{{ form.hidden_tag() }}
+		<p>
+		File Name including extension. No need to put the filepath. <br>
+		{{ form.fileName(size=100) }}
+		</p>
+		<p>
+		Width of Resized Image:<br>
+		{{ form.width(size=10) }}
+		</p>
+		<p>
+		Height of Resized Image:<br>
+		{{ form.height(size=10) }}
+		</p>
+		<p><input type="submit" value="Resize!"></p>
+	</form>
 
 	<h1> the CSS file used to create this website is from <a href='http://www.free-css.com'>Free-CSS</a> </h1>
 {% endblock %}

@@ -3,3 +3,7 @@ overview:
 - homepage lets you enter a url, sizes, and click resize.
 
 Clicking resize takes you to the resize page, where the picture is. There is a button at the bottom that says resize another image. That takes you back to the home page.
+
+Requirements:
+built on the flask webapp framework for python. Also requires flask.ext.wtf
+uses PIL, specifically pillow to resize images.
