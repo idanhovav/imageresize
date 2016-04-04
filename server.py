@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'KJHDJKHKSANM<*&(*^21ngjk574754' # not sure why i need this
 originalImageFolderName = "origImages/"
 resizedImageFolderName = "static/resizedImages/"
+placeHolderImage = "static/resizedImages/placeholder.jpg"
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -20,19 +21,14 @@ def home():
 		height = form.height.data
 		flash('Resizing Image={0} to {1}, {2}'.format(fileName, str(width), str(height)))
 		newImg = resize_function(fileName, width, height)
-		return render_template('resize.html', image=newImg, picWidth=width, picHeight=height)
-	return render_template('home.html', form=form)
-
-#@app.route('/resize')
-#def resize(img):
-	#resize the goddam image and return it to somewhere
-#	return render_template('resize.html', image=img)
+		return render_template('home.html', form=form, image=newImg, picWidth=width, picHeight=height)
+	return render_template('home.html', form=form, image=placeHolderImage, picWidth=128, picHeight=128)
 
 # returns filename as a string
 def resize_function(inFile, width, height):
 	size = int(float(width)), int(float(height))
 	inFileName, inExtension = os.path.splitext(inFile)
-	outFile = resizedImageFolderName + inFileName + "_RESIZED.jpg"
+	outFile = resizedImageFolderName + inFileName + "_" + width + "x" + height + ".jpg"
 	try:
 		im = Image.open(originalImageFolderName + inFile)
 		im.thumbnail(size, Image.ANTIALIAS)

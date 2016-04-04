@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1> Fill out the following form to begin: </h1>
+	<h1> An image of size {{ picWidth }} by {{ picHeight }} </h1>
+	<img src="{{ image }}" alt="{{ image }}" style="width:{{ picWidth }}px;height:{{ picHeight }}px;">
+
+	<h1> Fill out the following form to resize an Image: </h1>
 	<form action="" method="post" name="primaryForm">
 		{{ form.hidden_tag() }}
 		<p>
