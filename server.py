@@ -7,7 +7,9 @@ from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.secret_key = 'KJHDJKHKSANM<*&(*^21ngjk574754' # not sure why i need this
-imageFolderName = "images/"
+originalImageFolderName = "origImages/"
+resizedImageFolderName = "templates/resizedImages/"
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -17,24 +19,24 @@ def home():
 		width = form.width.data
 		height = form.height.data
 		flash('Resizing Image={0} to {1}, {2}'.format(fileName, str(width), str(height)))
-		newImg = "imageResize/" + resize_function(fileName, width, height)
-		return resize(newImg)
+		newImg = "resizedImages/" + resize_function(fileName, width, height)
+		return render_template('resize.html', image=newImg, picWidth=width, picHeight=height)
 	return render_template('home.html', form=form)
 
-@app.route('/resize')
-def resize(img):
+#@app.route('/resize')
+#def resize(img):
 	#resize the goddam image and return it to somewhere
-	return render_template('resize.html', image=[img])
+#	return render_template('resize.html', image=img)
 
-# returns filename
+# returns filename as a string
 def resize_function(inFile, width, height):
 	size = int(float(width)), int(float(height))
 	inFileName, inExtension = os.path.splitext(inFile)
-	outFile = imageFolderName + inFileName + "_RESIZED"+ ".jpg"
+	outFile = inFileName + "_RESIZED.jpg"
 	try:
-		im = Image.open(imageFolderName + inFile)
+		im = Image.open(originalImageFolderName + inFile)
 		im.thumbnail(size, Image.ANTIALIAS)
-		im.save(outFile, "JPEG")
+		im.save(resizedImageFolderName + outFile, "JPEG")
 		return outFile
 	except IOError:
 		print("issue")

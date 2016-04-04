@@ -1,8 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1> the resize page </h1>
-
-	{% for img in image %}
-		<img src = {{ img }} alt="resized image">
-	{% endfor %}
+	<h1> the resize page yeet </h1>
+	<img src={{ image }} alt={{ image }} style="width:{{ picWidth }}px;height:{{ picHeight }}px;">
 {% endblock %}
