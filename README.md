@@ -25,6 +25,7 @@ Possible addons:
 - slidebar for sizes.
 - url linking instead of downloading images.
 - choosing an image from anywhere in the computer.
+- clearing resizedImages to save memory. Just put an upper lim on memory and clear once limit is reached.
 
 Find this project on github: https://github.com/idanhovav/imageresize.
 
